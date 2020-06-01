@@ -64,7 +64,7 @@ def plot_hex(fig, centers, weights):
 
     else:
             
-        cmap = plt.get_cmap('viridis')
+        cmap = plt.get_cmap('Greys')
         for x,y,w in zip(xpoints,ypoints,weights):
             hexagon = RegularPolygon((x,y), numVertices=6, radius=.95/np.sqrt(3), 
                                 orientation=np.radians(0), 
