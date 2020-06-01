@@ -53,7 +53,7 @@ def plot_hex(fig, centers, weights):
     xpoints = [x[0]  for x in centers]
     ypoints = [x[1]  for x in centers]
     patches = []
-
+    #is istance means that the first element is the type of the second one
     if any(isinstance(el, list) for el in weights) and len(weights[0])==3:
         cmap = plt.get_cmap('Greys')
         for x,y,w in zip(xpoints,ypoints,weights):
