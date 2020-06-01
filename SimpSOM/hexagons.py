@@ -55,6 +55,7 @@ def plot_hex(fig, centers, weights):
     patches = []
     #is istance means that the first element is the type of the second one
     if any(isinstance(el, list) for el in weights) and len(weights[0])==3:
+        print("SI")
         cmap = plt.get_cmap('Greys')
         for x,y,w in zip(xpoints,ypoints,weights):
             hexagon = RegularPolygon((x,y), numVertices=6, radius=.95/np.sqrt(3), 
@@ -77,5 +78,5 @@ def plot_hex(fig, centers, weights):
         
     ax.axis('off')
     ax.autoscale_view()
-    
+    print("FINITO!")
     return ax
