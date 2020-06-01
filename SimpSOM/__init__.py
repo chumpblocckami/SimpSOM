@@ -355,7 +355,7 @@ class somNet:
             colname = str(colnum)
 
         if labels != []:
-            colors = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c',
+            colors = ['#0026ff','#ff0000','#086300','#33a02c','#fb9a99','#e31a1c',
             		  '#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928']
             class_assignment = {}
             counter = 0
@@ -385,7 +385,7 @@ class somNet:
                 printName=os.path.join(path,'colorProjection.png')
                 self.nodes_graph(colnum, False, False)
                 plt.scatter([pos[0] for pos in bmuList],[pos[1] for pos in bmuList], color=cls,  
-                        s=500, edgecolor='#ffffff', linewidth=5, zorder=10)
+                        s=500, edgecolor='#000000', linewidth=5, zorder=10)
                 plt.title('Datapoints Projection', size=80)
             else:
                 #a random perturbation is added to the points positions so that data 
@@ -400,7 +400,7 @@ class somNet:
                     printName=os.path.join(path,'projection_'+ colname +'.png')
                     self.nodes_graph(colnum, False, False, colname=colname,cbar=False)
                     plt.scatter([pos[0]-0.125+np.random.rand()*0.25 for pos in bmuList],[pos[1]-0.125+np.random.rand()*0.25 for pos in bmuList], c=cls, cmap=cm.Greys,
-                            s=400, edgecolor='#ffffff', linewidth=4, zorder=10)
+                            s=400, edgecolor='#000000', linewidth=1, zorder=10)
                     plt.title('Datapoints Projection #' +  str(colnum), size=80)
                 
             if labels!=[]:
