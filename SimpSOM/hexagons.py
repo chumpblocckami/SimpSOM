@@ -55,11 +55,11 @@ def plot_hex(fig, centers, weights):
     patches = []
 
     if any(isinstance(el, list) for el in weights) and len(weights[0])==3:
-    
+        cmap = plt.get_cmap('Greys')
         for x,y,w in zip(xpoints,ypoints,weights):
             hexagon = RegularPolygon((x,y), numVertices=6, radius=.95/np.sqrt(3), 
                                 orientation=np.radians(0), 
-                                facecolor=w)
+                                facecolor=cmap(w))
             ax.add_patch(hexagon)
 
     else:
