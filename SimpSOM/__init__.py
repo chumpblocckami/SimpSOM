@@ -222,7 +222,7 @@ class somNet:
         print("\rTraining SOM... done!")
 
         
-    def nodes_graph(self, colnum=0, show=False, printout=True, path='./', colname=None):
+    def nodes_graph(self, colnum=0, show=False, printout=True, path='./', colname=None,cbar=True):
     
         """Plot a 2D map with hexagonal nodes and weights values
 
@@ -255,10 +255,11 @@ class somNet:
             ax = hx.plot_hex(fig, centers, cols)
             ax.set_title('Node Grid w Feature ' +  colname, size=80)
             divider = make_axes_locatable(ax)
-            cax = divider.append_axes("right", size="5%", pad=0.0)
-            cbar=plt.colorbar(ax.collections[0], cax=cax)
-            cbar.set_label(colname, size=80, labelpad=50)
-            cbar.ax.tick_params(labelsize=60)
+            if cbar:
+             cax = divider.append_axes("right", size="5%", pad=0.0)
+             cbar=plt.colorbar(ax.collections[0], cax=cax)
+             cbar.set_label(colname, size=80, labelpad=50)
+             cbar.ax.tick_params(labelsize=60)
             plt.sca(ax)
             printName=os.path.join(path,'nodesFeature_'+str(colnum)+'.png')
             
@@ -397,7 +398,7 @@ class somNet:
                     plt.title('Datapoints Projection on Nodes Difference', size=80)
                 else:   
                     printName=os.path.join(path,'projection_'+ colname +'.png')
-                    self.nodes_graph(colnum, False, False, colname=colname)
+                    self.nodes_graph(colnum, False, False, colname=colname,cbar=False)
                     plt.scatter([pos[0]-0.125+np.random.rand()*0.25 for pos in bmuList],[pos[1]-0.125+np.random.rand()*0.25 for pos in bmuList], c=cls, cmap=cm.Greys,
                             s=400, edgecolor='#ffffff', linewidth=4, zorder=10)
                     plt.title('Datapoints Projection #' +  str(colnum), size=80)
