@@ -391,14 +391,14 @@ class somNet:
                 #belonging plotted to the same bmu will be visible in the plot      
                 if colnum==-1:
                     printName=os.path.join(path,'projection_difference.png')
-                    self.diff_graph(False, False, False)
-                    plt.scatter([pos[0]-0.125+np.random.rand()*0.25 for pos in bmuList],[pos[1]-0.125+np.random.rand()*0.25 for pos in bmuList], c=cls, cmap=cm.viridis,
+                    self.diff_graph(True, False, False)
+                    plt.scatter([pos[0]-0.125+np.random.rand()*0.25 for pos in bmuList],[pos[1]-0.125+np.random.rand()*0.25 for pos in bmuList], c=cls, cmap=cm.Greys,
                             s=400, linewidth=0, zorder=10)
                     plt.title('Datapoints Projection on Nodes Difference', size=80)
                 else:   
                     printName=os.path.join(path,'projection_'+ colname +'.png')
                     self.nodes_graph(colnum, False, False, colname=colname)
-                    plt.scatter([pos[0]-0.125+np.random.rand()*0.25 for pos in bmuList],[pos[1]-0.125+np.random.rand()*0.25 for pos in bmuList], c=cls, cmap=cm.viridis,
+                    plt.scatter([pos[0]-0.125+np.random.rand()*0.25 for pos in bmuList],[pos[1]-0.125+np.random.rand()*0.25 for pos in bmuList], c=cls, cmap=cm.Greys,
                             s=400, edgecolor='#ffffff', linewidth=4, zorder=10)
                     plt.title('Datapoints Projection #' +  str(colnum), size=80)
                 
