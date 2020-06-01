@@ -222,7 +222,7 @@ class somNet:
         print("\rTraining SOM... done!")
 
         
-    def nodes_graph(self, colnum=0, show=False, printout=True, path='./', colname=None,cbar=True):
+    def nodes_graph(self, colnum=0, show=False, printout=True, path='./', colname=None,cbar=True,cmap_type="Greys"):
     
         """Plot a 2D map with hexagonal nodes and weights values
 
@@ -246,13 +246,13 @@ class somNet:
 
         if self.colorEx==True:
             cols = [[np.float(node.weights[0]),np.float(node.weights[1]),np.float(node.weights[2])]for node in self.nodeList]   
-            ax = hx.plot_hex(fig, centers, cols)
+            ax = hx.plot_hex(fig, centers, cols,cmap_type=cmap_type)
             ax.set_title('Node Grid w Color Features', size=80)
             printName=os.path.join(path,'nodesColors.png')
 
         else:
             cols = [node.weights[colnum] for node in self.nodeList]
-            ax = hx.plot_hex(fig, centers, cols)
+            ax = hx.plot_hex(fig, centers, cols,cmap_type = cmap_type)
             ax.set_title('Node Grid w Feature ' +  colname, size=80)
             divider = make_axes_locatable(ax)
             if cbar:
@@ -271,7 +271,7 @@ class somNet:
             plt.clf()
 
 
-    def diff_graph(self, show=False, printout=True, returns=False, path='./'):
+    def diff_graph(self, show=False, printout=True, returns=False, path='./',cmap_type = "Greys):
     
         """Plot a 2D map with nodes and weights difference among neighbouring nodes.
 
@@ -309,7 +309,7 @@ class somNet:
             yInch = self.netHeight*widthP/dpi 
             fig=plt.figure(figsize=(xInch, yInch), dpi=dpi)
 
-            ax = hx.plot_hex(fig, centers, diffs)
+            ax = hx.plot_hex(fig, centers, diffs,cmap_type = cmap_type)
             ax.set_title('Nodes Grid w Weights Difference', size=80)
             
             divider = make_axes_locatable(ax)
@@ -331,7 +331,7 @@ class somNet:
         if returns==True:
             return diffs 
 
-    def project(self, array, colnum=-1, labels=[], show=False, printout=True, path='./', colname = None):
+    def project(self, array, colnum=-1, labels=[], show=False, printout=True, path='./', colname = None,cbar=False):
 
         """Project the datapoints of a given array to the 2D space of the 
             SOM by calculating the bmus. If requested plot a 2D map with as 
@@ -398,7 +398,7 @@ class somNet:
                     plt.title('Datapoints Projection on Nodes Difference', size=80)
                 else:   
                     printName=os.path.join(path,'projection_'+ colname +'.png')
-                    self.nodes_graph(colnum, False, False, colname=colname,cbar=False)
+                    self.nodes_graph(colnum, False, False, colname=colname,cbar=cbar)
                     plt.scatter([pos[0]-0.125+np.random.rand()*0.25 for pos in bmuList],[pos[1]-0.125+np.random.rand()*0.25 for pos in bmuList], c=cls, cmap=cm.Greys,
                             s=400, edgecolor='#000000', linewidth=1, zorder=10)
                     plt.title('Datapoints Projection #' +  str(colnum), size=80)
