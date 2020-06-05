@@ -271,7 +271,7 @@ class somNet:
             plt.clf()
 
 
-    def diff_graph(self, show=False, printout=True, returns=False, path='./',cmap_type = "Greys):
+    def diff_graph(self, show=False, printout=True, returns=False, path='./',cmap_type = "Greys"):
     
         """Plot a 2D map with nodes and weights difference among neighbouring nodes.
 
